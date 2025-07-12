@@ -128,6 +128,9 @@ Following are the references that discuss the boot sequence for various systems 
 - Amstrad CPC `cpc464`: https://www.cpcwiki.eu/forum/technical-support/unknown-command/
 - Camputer Lynx `lynx128k`: https://forums.launchbox-app.com/topic/79355-camputer-lynx/
 - EACA Colour Genie `cgenie`: https://forums.launchbox-app.com/topic/79552-eaca-colour-genie-mame-problem/
+- Orion 128 `orionzms`: https://forums.launchbox-app.com/topic/63165-orion-128-floppy-emulation-in-mame/
+- Radio-86RK `radio86`: https://forums.launchbox-app.com/topic/75504-mikrosha-86rk-command-line/
+- Timex Sinclair TS-2068 `ts2068`: https://forums.atariage.com/topic/277981-timex-2068/
 
 **Compilation**
 - Autoboot Command / Script for MAME SWL (Computer Systems) - https://forums.launchbox-app.com/topic/54987-autoboot-command-script-for-mame-swl-computer-systems/
