@@ -169,6 +169,39 @@ local function create_cassette_handler(cassette_device_tag)
 
         return false -- Indicate loading is not yet done
     end
+end
+
+local function create_delay_logic()
+    local delay_start_frame = 0
+    local delay_in_frames = 0
+    local delay_active = false
+
+    -- This is the function that will be called continuously to check the delay state
+    return function(current_frame_num, initiate_delay_frames)
+        -- If initiate_delay_frames is provided, it means we want to START a new delay
+        if initiate_delay_frames and not delay_active then
+            delay_start_frame = current_frame_num
+            delay_in_frames = initiate_delay_frames
+            delay_active = true
+            emu.print_info("Delay initiated at frame " .. current_frame_num .. " for " .. delay_in_frames .. " frames.")
+            return false -- Delay just started, not done yet
+        end
+
+        -- If a delay is active, check if it's over
+        if delay_active then
+            if current_frame_num >= delay_start_frame + delay_in_frames then
+                delay_active = false -- Delay is complete
+                emu.print_info("Delay completed at frame " .. current_frame_num)
+                return true -- Signal delay is over
+            else
+                return false -- Delay is still active
+            end
+        end
+
+        return true -- No delay was active or initiated, so it's "done" by default.
+    end
+end
+
 local function debug_frame_num(frame_num)
     if frame_num % 100 == 0 then -- The modulo operator (%) gives the remainder of a division
         emu.print_info("Current Frame: " .. frame_num)
@@ -184,6 +217,7 @@ return {
     print_buttons = print_button_table,      
     play_cassette_at_frame = play_cassette_at_frame, 
     create_cassette_handler = create_cassette_handler,
+    create_delay_logic = create_delay_logic,
     DEFAULT_BUTTON_PRESS_DURATION = DEFAULT_BUTTON_PRESS_DURATION,
     DEFAULT_CASSETTE_MOTOR_OFF_DELAY_FRAMES = DEFAULT_CASSETTE_MOTOR_OFF_DELAY_FRAMES,
     print_image_info = print_image_info, 
