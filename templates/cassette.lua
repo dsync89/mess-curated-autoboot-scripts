@@ -7,14 +7,18 @@ local common_autoboot = dofile("autoboot_scripts/autoboot_common.lua")
 local button = {}
 local frame_num = 0
 
+-- --- Map all buttons ---
+common_autoboot.populate_buttons(button)
+
+-- --- Print Info ---
+common_autoboot.print_image_info()
+-- common_autoboot.print_buttons(button)
+
 -- --- Cassette Loading Handler Setup ---
 local CASSETTE_SLOT = 3
 local CASSETTE_DEVICE_TAG = manager.machine.images:at(CASSETTE_SLOT).device.tag
 local cassette_handler = common_autoboot.create_cassette_handler(CASSETTE_DEVICE_TAG) 
 
-common_autoboot.populate_buttons(button)
-
-common_autoboot.print_image_info()
 
 -- --- Constants for this specific script ---
 local BUTTON_PRESS_DURATION = common_autoboot.DEFAULT_BUTTON_PRESS_DURATION
