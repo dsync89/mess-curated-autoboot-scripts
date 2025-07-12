@@ -54,11 +54,11 @@ local function populate_button_table(target_button_table)
 end
 
 -- Function to get a list of device tag, e.g. :cassette. Some system uses :cassette1
-local function print_device_tag()
-    emu.print_info("--- List of Device Tag ---")
-    print(manager.machine.images:at(3).device.tag)
-    emu.print_info("--- End of Device Tag ---")
-end
+-- local function print_device_tag()
+--     emu.print_info("--- List of Device Tag ---")
+--     print(manager.machine.images:at(3).device.tag)
+--     emu.print_info("--- End of Device Tag ---")
+-- end
 
 local function print_image_info()
     emu.print_info("--- Loaded Image Information ---")
@@ -73,7 +73,7 @@ local function print_image_info()
             local image = manager.machine.images:at(i)
             if image then
                 emu.print_info(string.format("  Image %d:", i))
-                emu.print_info(string.format("    Tag: %s", image.tag or "N/A"))
+                emu.print_info(string.format("    Device Tag: %s", image.device.tag or "N/A"))
                 emu.print_info(string.format("    Filename: %s", image.filename or "N/A"))
                 emu.print_info(string.format("    Mounted: %s", tostring(image.mounted)))
                 emu.print_info(string.format("    Software Name: %s", image.software_name or "N/A")) -- From softlist, if applicable
@@ -173,7 +173,7 @@ local function debug_frame_num(frame_num)
     if frame_num % 100 == 0 then -- The modulo operator (%) gives the remainder of a division
         emu.print_info("Current Frame: " .. frame_num)
     end
-end
+end    
 
 
 -- Return a table of functions
