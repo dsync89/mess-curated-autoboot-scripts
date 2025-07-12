@@ -11,7 +11,6 @@ local frame_num = 0
 
 common_autoboot.populate_buttons(button)
 
-common_autoboot.print_device_tag()
 common_autoboot.print_image_info()
 
 -- Print the button table contents for debugging
