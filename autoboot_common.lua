@@ -169,6 +169,10 @@ local function create_cassette_handler(cassette_device_tag)
 
         return false -- Indicate loading is not yet done
     end
+local function debug_frame_num(frame_num)
+    if frame_num % 100 == 0 then -- The modulo operator (%) gives the remainder of a division
+        emu.print_info("Current Frame: " .. frame_num)
+    end
 end
 
 
@@ -184,4 +188,5 @@ return {
     DEFAULT_CASSETTE_MOTOR_OFF_DELAY_FRAMES = DEFAULT_CASSETTE_MOTOR_OFF_DELAY_FRAMES,
     print_image_info = print_image_info, 
     print_device_tag = print_device_tag,
+    debug_frame_num = debug_frame_num,
 }
