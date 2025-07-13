@@ -134,7 +134,7 @@ Following are the references that discuss the boot sequence for various systems 
 
 **Compilation**
 - Autoboot Command / Script for MAME SWL (Computer Systems) - https://forums.launchbox-app.com/topic/54987-autoboot-command-script-for-mame-swl-computer-systems/
-
+- MESS System Information File - https://draketungsten.github.io/arcade/mess.txt
 
 ## Disclaimer
 
